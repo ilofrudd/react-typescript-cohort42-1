@@ -14,7 +14,7 @@ interface Car {
     { brand: "Audi", price: 50000, isDiesel: true },
   ];
   
-  const Homework_06: React.FC = () => {
+  const Homework_06 = () => {
     return (
       <div className="homework06-wrapper">
         <h1 className="page-title">Homework 06</h1>
@@ -22,7 +22,7 @@ interface Car {
           {cars.map((car, index) => (
             <div className="card" key={index}>
               <h2 className="card-title">{car.brand}</h2>
-              <p className="card-info">Price: €{car.price}</p>
+              <p className="card-info">Price: ${car.price}</p>
               <p className="card-info">
                 Fuel Type: {car.isDiesel ? "Diesel" : "Petrol"}
               </p>
@@ -34,4 +34,3 @@ interface Car {
   };
   
   export default Homework_06;
-
