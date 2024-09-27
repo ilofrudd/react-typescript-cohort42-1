@@ -1,36 +1,40 @@
+import { ReactNode } from "react";
+import { v4 } from "uuid";
+
+import { Cars } from "./types";
 import "./styles.css";
 
-interface Car {
-    brand: string;
-    price: number;
-    isDiesel: boolean;
-  }
-  
-  const cars: Car[] = [
+function HomeWork_06() {
+  const cars: Cars[] = [
     { brand: "BMW", price: 20000, isDiesel: true },
     { brand: "Mercedes", price: 22000, isDiesel: false },
-    { brand: "Porsche", price: 50000, isDiesel: true },
+    { brand: "Porshe", price: 50000, isDiesel: true },
     { brand: "Nissan", price: 25000, isDiesel: false },
     { brand: "Audi", price: 50000, isDiesel: true },
   ];
-  
-  const Homework_06 = () => {
+
+  const carCards: ReactNode = cars.map((car: Cars) => {
+    const carId: string = v4();
+
     return (
-      <div className="homework06-wrapper">
-        <h1 className="page-title">Homework 06</h1>
-        <div className="cards-container">
-          {cars.map((car, index) => (
-            <div className="card" key={index}>
-              <h2 className="card-title">{car.brand}</h2>
-              <p className="card-info">Price: ${car.price}</p>
-              <p className="card-info">
-                Fuel Type: {car.isDiesel ? "Diesel" : "Petrol"}
-              </p>
-            </div>
-          ))}
+      <div key={carId} className="car-card-wrapper">
+        <div className="car-info-container">
+          <p className="car-info-title">Brand:</p>
+          <p className="car-info">{car.brand}</p>
+        </div>
+        <div className="car-info-container">
+          <p className="car-info-title">Price:</p>
+          <p className="car-info">{`${car.price}$`}</p>
+        </div>
+        <div className="car-info-container">
+          <p className="car-info-title">Fuel type:</p>
+          <p className="car-info">{car.isDiesel ? "Diesel" : "Petrol"}</p>
         </div>
       </div>
     );
-  };
-  
-  export default Homework_06;
+  });
+
+  return <div className="homework6-wrapper">{carCards}</div>;
+}
+
+export default HomeWork_06;
